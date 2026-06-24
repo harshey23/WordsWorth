@@ -9,6 +9,7 @@ import com.wordsworth.service.RoomService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+//further game logic , websockets on STOMP etc , don't add extra bro.
 @RestController
 @RequestMapping("/api/rooms")
 @RequiredArgsConstructor
