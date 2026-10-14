@@ -1,26 +1,22 @@
-import { useState } from 'react'
+import './App.css'
+import { Routes,Route } from 'react-router-dom'
 
 import Home from './pages/Home'
 import CreateGame from './pages/CreateGame'
+import JoinGame from './pages/JoinGame'
 
-import './App.css'
 
 function App() {
-  const [currentPage, setCurrentPage] = useState("home")
 
-  function handleCreateGame() {
-    setCurrentPage("create")
-  }
-
-  function handleBack() {
-    setCurrentPage("home")
-  }
 
   return (
-    <>
-      {currentPage === "home" && <Home onCreateGame={handleCreateGame} />}
-      {currentPage === "create" && <CreateGame onBack={handleBack} />}
-    </>
+
+    <Routes>
+      <Route path="/" element={<Home  />} />
+      <Route path="/create" element={<CreateGame />} />
+      <Route path="/join" element={<JoinGame />} />
+    </Routes>
+
   )
 }
 

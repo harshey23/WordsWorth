@@ -1,4 +1,9 @@
+import { useNavigate } from "react-router-dom"
+
 function Home({ onCreateGame }) {
+
+  const navigate = useNavigate();
+
   return (
     <main className="container">
       <div className="min-vh-100 d-flex align-items-center justify-content-center">
@@ -17,13 +22,16 @@ function Home({ onCreateGame }) {
 
             <button
               className="btn btn-primary btn-lg"
-              onClick={onCreateGame}
+              onClick={() => navigate ("/create")}
             >
               Create Game
             </button>
 
-            <button className="btn btn-outline-primary btn-lg">
+            <button className="btn btn-outline-primary btn-lg"
+              onClick={() => navigate ("/join")}
+            >
               Join Game
+              
             </button>
 
             <button className="btn btn-outline-secondary btn-lg">

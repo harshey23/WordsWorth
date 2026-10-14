@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 function CreateGame({ onBack }) {
+  const navigate = useNavigate();
   return (
     <main className="container">
       <div className="min-vh-100 d-flex align-items-center justify-content-center">
@@ -37,9 +40,9 @@ function CreateGame({ onBack }) {
 
           <button
             className="btn btn-link w-100 mt-2"
-            onClick={onBack}
+            onClick={() => navigate("/")}
           >
-            Back
+            Back to Home
           </button>
 
         </div>
