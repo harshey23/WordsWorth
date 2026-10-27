@@ -9,13 +9,15 @@ public class Lobby {
     private final Player host;
     private final List<Player> players = new ArrayList<>();
     private final int totalRounds;
+    private final int roundDurationSeconds;
 
     private LobbyStatus status;
 
-    public Lobby(String roomCode, Player host, int totalRounds) {
+    public Lobby(String roomCode, Player host, int totalRounds,int roundDurationSeconds) {
         this.roomCode = roomCode;
         this.host = host;
         this.totalRounds = totalRounds;
+        this.roundDurationSeconds = roundDurationSeconds;
         this.status = LobbyStatus.WAITING;
 
         players.add(host);
@@ -34,6 +36,10 @@ public class Lobby {
         return totalRounds;
     }
 
+    public int getRoundDurationSeconds() {
+        return roundDurationSeconds;
+    }
+    
     public LobbyStatus getStatus() {
         return status;
     }

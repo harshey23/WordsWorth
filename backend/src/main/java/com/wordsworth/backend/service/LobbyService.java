@@ -16,14 +16,20 @@ public class LobbyService {
         this.lobbyRepository = lobbyRepository;
     }
 
-    public Lobby createLobby(String playerName, int totalRounds){
+    public Lobby createLobby(String playerName, int totalRounds, int roundDurationSeconds){
         if(playerName == null || playerName.isBlank()){
             throw new IllegalArgumentException("Player name can't be empty!");
         }
         if(totalRounds < 1 || totalRounds > 10){
             throw new IllegalArgumentException("Number of rounds should be between 1 and 10");
         }
-
+        if (roundDurationSeconds != 5
+                && roundDurationSeconds != 10
+                && roundDurationSeconds != 15) {
+            throw new IllegalArgumentException(
+                    "Round duration must be 5, 10, or 15 seconds."
+            );
+        }
         String roomCode;
         do{
             roomCode  = generateRoomCode();
@@ -31,7 +37,7 @@ public class LobbyService {
 
         Player host = new Player(UUID.randomUUID().toString(),playerName.trim(),true);
 
-        Lobby lobby = new Lobby(roomCode,host,totalRounds);
+        Lobby lobby = new Lobby(roomCode,host,totalRounds, roundDurationSeconds);
         lobbyRepository.save(lobby);
         return lobby;
     }
